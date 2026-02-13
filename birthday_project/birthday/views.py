@@ -7,6 +7,14 @@ from .forms import BirthdayForm
 from .models import Birthday
 from .utils import calculate_birthday_countdown
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+# Наследуем BirthdayCreateView от CreateView и от миксина LoginRequiredMixin:
+class BirthdayCreateView(LoginRequiredMixin, CreateView):
+    model = Birthday
+    form_class = BirthdayForm 
+
+
 class BirthdayListView(ListView):
     model = Birthday
     ordering = 'id'
