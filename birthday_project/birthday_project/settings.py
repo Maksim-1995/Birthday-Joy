@@ -25,8 +25,10 @@ SECRET_KEY = "django-insecure-5civ#aj4#eu&%l38%e3@+tzx@t0sjoj#+&=-)6!&+c(7g!&b2@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = [
+#     'localhost',
+#     '127.0.0.1',
+# ]
 
 # Application definition
 
@@ -39,7 +41,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "birthday.apps.BirthdayConfig",
     "pages.apps.PagesConfig",
+    "core.apps.CoreConfig",
     "django_bootstrap5",
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -50,6 +54,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "birthday_project.urls"
@@ -131,4 +136,10 @@ EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 LOGIN_REDIRECT_URL = 'pages:homepage'
 
 LOGIN_URL = 'login'  
+
+CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
