@@ -20,6 +20,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from django.urls import include, path, reverse_lazy
 from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('pages.urls')),
@@ -40,8 +41,7 @@ urlpatterns = [
 
 if settings.DEBUG:
     import debug_toolbar
-    # Добавить к списку urlpatterns список адресов из приложения debug_toolbar:
-    urlpatterns += (path('__debug__/', include(debug_toolbar.urls)),),
+    urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     
 handler404 = 'core.views.page_not_found'
