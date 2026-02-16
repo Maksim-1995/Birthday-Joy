@@ -31,14 +31,12 @@
       </div>
         <!-- Конец нового блока кода -->
         {% if birthday.author == user %}
-          <div>
+        <div>
           <a href="{% url 'birthday:edit' birthday.id %}">Изменить запись</a> 
           | <a href="{% url 'birthday:delete' birthday.id %}">Удалить запись</a>
         </div>
       {% endif %}
     </div>
-        {% endif %}
-      </div>
 
       {% if not forloop.last %}
         <hr class="mt-3">
